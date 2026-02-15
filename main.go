@@ -144,12 +144,12 @@ func main() {
 
 	fmt.Println(">> training <<")
 	for i := 1; i <= 5; i++ {
-		err := addDirToBow(fmt.Sprintf("./enron%v/ham", i), hamBow)
+		err := addDirToBow(fmt.Sprintf("data/enron%v/ham", i), hamBow)
 		if err != nil {
 			panic(err)
 		}
 
-		err = addDirToBow(fmt.Sprintf("./enron%v/spam", i), spamBow)
+		err = addDirToBow(fmt.Sprintf("data/enron%v/spam", i), spamBow)
 		if err != nil {
 			panic(err)
 		}
@@ -159,14 +159,14 @@ func main() {
 	spamTotal := totalWordCount(spamBow)
 
 	fmt.Println(">> classify ham <<")
-	spamCount, hamCount, err := classifyDir("enron6/ham", hamBow, hamTotal, spamBow, spamTotal)
+	spamCount, hamCount, err := classifyDir("data/enron6/ham", hamBow, hamTotal, spamBow, spamTotal)
 	fmt.Printf("spam: %d \n ham: %d \n", spamCount, hamCount)
 	if err != nil {
 		panic(err)
 	}
 
 	fmt.Println(">> classify spam <<")
-	spamCount, hamCount, err = classifyDir("enron6/spam", hamBow, hamTotal, spamBow, spamTotal)
+	spamCount, hamCount, err = classifyDir("data/enron6/spam", hamBow, hamTotal, spamBow, spamTotal)
 	fmt.Printf("spam: %d \n ham: %d \n", spamCount, hamCount)
 	if err != nil {
 		panic(err)
